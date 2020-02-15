@@ -63,7 +63,7 @@ func NewClusterScope(params ClusterScopeParams) (*ClusterScope, error) {
 	}
 	return &ClusterScope{
 		Logger:       params.Logger,
-		client:       params.Client,
+		Client:       params.Client,
 		AzureClients: params.AzureClients,
 		Cluster:      params.Cluster,
 		AzureCluster: params.AzureCluster,
@@ -75,7 +75,7 @@ func NewClusterScope(params ClusterScopeParams) (*ClusterScope, error) {
 // ClusterScope defines the basic context for an actuator to operate upon.
 type ClusterScope struct {
 	logr.Logger
-	client      client.Client
+	Client      client.Client
 	patchHelper *patch.Helper
 
 	AzureClients

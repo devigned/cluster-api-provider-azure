@@ -32,12 +32,34 @@ func MapToTags(src map[string]*string) infrav1.Tags {
 	return tags
 }
 
+// MapToTagsNoPtr converts a map[string]string into a infrav1.Tags.
+func MapToTagsNoPtr(src map[string]string) infrav1.Tags {
+	tags := make(infrav1.Tags, len(src))
+
+	for k, v := range src {
+		tags[k] = v
+	}
+
+	return tags
+}
+
 // TagsToMap converts infrav1.Tags into a map[string]*string.
 func TagsToMap(src infrav1.Tags) map[string]*string {
 	tags := make(map[string]*string, len(src))
 
 	for k, v := range src {
 		tags[k] = to.StringPtr(v)
+	}
+
+	return tags
+}
+
+// TagsToMapNoPtr converts infrav1.Tags into a map[string]string.
+func TagsToMapNoPtr(src infrav1.Tags) map[string]string {
+	tags := make(map[string]string, len(src))
+
+	for k, v := range src {
+		tags[k] = v
 	}
 
 	return tags
